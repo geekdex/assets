@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sights - Photo Gallery</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .photo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .caption {
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            transition: transform 0.1s ease-out;
+            cursor: grab;
+            transform-origin: center center;
+        }
+        .lightbox-content:active {
+            cursor: grabbing;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sights</h1>
+        <a href="../index.html" class="back-link">← Back to Gallery</a>
+    </header>
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="01.Autumn_ParkPicnic.png" alt="Autumn ParkPicnic" loading="lazy">
+            <div class="caption">Autumn ParkPicnic</div>
+        </div>
+        <div class="photo-card">
+            <img src="02.Rainy_CafeWindow.png" alt="Rainy CafeWindow" loading="lazy">
+            <div class="caption">Rainy CafeWindow</div>
+        </div>
+        <div class="photo-card">
+            <img src="03.Busy_FamilyKitchen.png" alt="Busy FamilyKitchen" loading="lazy">
+            <div class="caption">Busy FamilyKitchen</div>
+        </div>
+        <div class="photo-card">
+            <img src="04.City_RooftopParty.png" alt="City RooftopParty" loading="lazy">
+            <div class="caption">City RooftopParty</div>
+        </div>
+        <div class="photo-card">
+            <img src="05.Desert_Bonfire.png" alt="Desert Bonfire" loading="lazy">
+            <div class="caption">Desert Bonfire</div>
+        </div>
+        <div class="photo-card">
+            <img src="06.Coastal_RoadTrip.png" alt="Coastal RoadTrip" loading="lazy">
+            <div class="caption">Coastal RoadTrip</div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close');
+        const cards = document.querySelectorAll('.photo-card');
+
+        // Zoom and Pan variables
+        let scale = 1;
+        let isDragging = false;
+        let startX = 0, startY = 0;
+        let translateX = 0, translateY = 0;
+
+        function resetZoom() {
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateTransform();
+        }
+
+        function updateTransform() {
+            lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const img = card.querySelector('img');
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+                resetZoom();
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Wheel Zoom
+        lightbox.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * -0.001;
+            const newScale = Math.min(Math.max(0.5, scale + delta), 5);
+            scale = newScale;
+            updateTransform();
+        });
+
+        // Drag Pan
+        lightboxImg.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            lightboxImg.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                lightboxImg.style.cursor = 'grab';
+            }
+        });
+    </script>
+</body>
+</html>
