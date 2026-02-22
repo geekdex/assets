@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery</title>
+    <title>Avatar - Photo Gallery</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,14 +19,21 @@
         header {
             background-color: #fff;
             width: 100%;
-            padding: 20px 0;
+            padding: 20px 40px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 40px;
         }
         h1 {
             margin: 0;
             font-weight: 300;
+        }
+        .back-link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
         }
         .container {
             display: flex;
@@ -73,34 +80,25 @@
 </head>
 <body>
     <header>
-        <h1>My Photo Gallery</h1>
+        <h1>Avatar</h1>
+        <a href="../index.html" class="back-link">← Back to Gallery</a>
     </header>
     <div class="container">
 
-        <a href="avatar/index.html" class="card">
+        <a href="us/index.html" class="card">
             <div class="card-content">
                 <span class="icon">📁</span>
-                <h2>Avatar</h2>
-                <p>35 photos</p>
+                <h2>US</h2>
+                <p>13 photos</p>
             </div>
         </a>
-
-        <a href="family/index.html" class="card">
+        <a href="cn/index.html" class="card">
             <div class="card-content">
                 <span class="icon">📁</span>
-                <h2>Family</h2>
-                <p>20 photos</p>
+                <h2>CN</h2>
+                <p>22 photos</p>
             </div>
         </a>
-
-        <a href="sights/index.html" class="card">
-            <div class="card-content">
-                <span class="icon">📁</span>
-                <h2>Sights</h2>
-                <p>6 photos</p>
-            </div>
-        </a>
-
     </div>
 </body>
 </html>

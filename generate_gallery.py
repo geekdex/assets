@@ -24,17 +24,39 @@ def generate_gallery():
         images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
         images.sort()
 
-        if not images:
-            continue
-
-        categories.append({
-            'dir': subdir,
-            'title': subdir.capitalize(),
-            'count': len(images)
-        })
-
-        # Generate index.html for the subdirectory
-        generate_category_html(subdir, images)
+        # Check if this directory has subdirectories with images
+        sub_subdirs = [d for d in os.listdir(subdir_path) if os.path.isdir(os.path.join(subdir_path, d)) and not d.startswith('.')]
+        
+        if images:
+            # Directory has images directly
+            categories.append({
+                'dir': subdir,
+                'title': subdir.capitalize(),
+                'count': len(images)
+            })
+            generate_category_html(subdir, images)
+        elif sub_subdirs:
+            # Directory has subdirectories, check if they contain images
+            total_images = 0
+            has_images = False
+            for sub_subdir in sub_subdirs:
+                sub_subdir_path = os.path.join(subdir_path, sub_subdir)
+                sub_images = [f for f in os.listdir(sub_subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+                if sub_images:
+                    has_images = True
+                    total_images += len(sub_images)
+                    sub_images.sort()
+                    # Generate index.html for each subdirectory
+                    generate_category_html(os.path.join(subdir, sub_subdir), sub_images, parent_dir=subdir)
+            
+            if has_images:
+                categories.append({
+                    'dir': subdir,
+                    'title': subdir.capitalize(),
+                    'count': total_images
+                })
+                # Generate index.html for the parent directory showing subdirectories
+                generate_parent_category_html(subdir, sub_subdirs)
 
     # Generate root index.html
     generate_root_html(categories)
@@ -141,8 +163,126 @@ def generate_root_html(categories):
         f.write(html_content)
     print(f"Generated index.html with {len(categories)} categories.")
 
-def generate_category_html(subdir, images):
-    title = subdir.capitalize()
+def generate_parent_category_html(parent_dir, subdirs):
+    """Generate index.html for a parent directory that contains subdirectories with images."""
+    title = parent_dir.capitalize()
+    
+    subdir_cards = ""
+    for subdir in subdirs:
+        subdir_path = os.path.join(parent_dir, subdir)
+        images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+        if not images:
+            continue
+        
+        subdir_title = subdir.upper() if len(subdir) <= 3 else subdir.capitalize()
+        subdir_cards += f"""
+        <a href="{urllib.parse.quote(subdir)}/index.html" class="card">
+            <div class="card-content">
+                <span class="icon">📁</span>
+                <h2>{subdir_title}</h2>
+                <p>{len(images)} photos</p>
+            </div>
+        </a>"""
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - Photo Gallery</title>
+    <style>
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }}
+        header {{
+            background-color: #fff;
+            width: 100%;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }}
+        h1 {{
+            margin: 0;
+            font-weight: 300;
+        }}
+        .back-link {{
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }}
+        .container {{
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }}
+        .card {{
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }}
+        .card:hover {{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }}
+        .card-content {{
+            padding: 40px 20px;
+        }}
+        .card h2 {{
+            margin: 0;
+            font-size: 24px;
+            color: #007bff;
+        }}
+        .card p {{
+            color: #666;
+            margin-top: 10px;
+        }}
+        .icon {{
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{title}</h1>
+        <a href="../index.html" class="back-link">← Back to Gallery</a>
+    </header>
+    <div class="container">
+{subdir_cards}
+    </div>
+</body>
+</html>
+"""
+    output_path = os.path.join(parent_dir, 'index.html')
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print(f"Generated {output_path} with {len(subdirs)} subcategories.")
+
+def generate_category_html(subdir, images, parent_dir=None):
+    title = os.path.basename(subdir).upper() if len(os.path.basename(subdir)) <= 3 else os.path.basename(subdir).capitalize()
+    back_link = "../../index.html" if parent_dir else "../index.html"
     
     image_cards = ""
     for img in images:
@@ -270,7 +410,7 @@ def generate_category_html(subdir, images):
 <body>
     <header>
         <h1>{title}</h1>
-        <a href="../index.html" class="back-link">← Back to Gallery</a>
+        <a href="{back_link}" class="back-link">← Back to Gallery</a>
     </header>
     <div class="gallery">
 {image_cards}
