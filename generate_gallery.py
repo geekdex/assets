@@ -1,5 +1,6 @@
 import os
 import urllib.parse
+import json
 
 def get_title(name):
     """Converts filename/dirname to a pretty title."""
@@ -17,6 +18,7 @@ def generate_gallery():
     subdirs.sort()
 
     categories = []
+    gallery_data = {}  # JSON数据结构
     
     # Process each subdirectory
     for subdir in subdirs:
@@ -35,10 +37,13 @@ def generate_gallery():
                 'count': len(images)
             })
             generate_category_html(subdir, images)
+            # 添加到JSON数据
+            gallery_data[subdir] = [f"/{subdir}/{img}" for img in images]
         elif sub_subdirs:
             # Directory has subdirectories, check if they contain images
             total_images = 0
             has_images = False
+            subdir_data = {}  # 存储子目录的图片
             for sub_subdir in sub_subdirs:
                 sub_subdir_path = os.path.join(subdir_path, sub_subdir)
                 sub_images = [f for f in os.listdir(sub_subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
@@ -48,6 +53,8 @@ def generate_gallery():
                     sub_images.sort()
                     # Generate index.html for each subdirectory
                     generate_category_html(os.path.join(subdir, sub_subdir), sub_images, parent_dir=subdir)
+                    # 添加到JSON数据
+                    subdir_data[sub_subdir] = [f"/{subdir}/{sub_subdir}/{img}" for img in sub_images]
             
             if has_images:
                 categories.append({
@@ -57,9 +64,15 @@ def generate_gallery():
                 })
                 # Generate index.html for the parent directory showing subdirectories
                 generate_parent_category_html(subdir, sub_subdirs)
+                # 添加到JSON数据
+                gallery_data[subdir] = subdir_data
 
     # Generate root index.html
     generate_root_html(categories)
+    
+    # Generate gallery.json
+    generate_gallery_json(gallery_data)
+    
     print("Gallery generation complete!")
 
 def generate_root_html(categories):
@@ -162,6 +175,12 @@ def generate_root_html(categories):
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
     print(f"Generated index.html with {len(categories)} categories.")
+
+def generate_gallery_json(gallery_data):
+    """Generate gallery.json file with all image paths."""
+    with open('gallery.json', 'w', encoding='utf-8') as f:
+        json.dump(gallery_data, f, ensure_ascii=False, indent=2)
+    print(f"Generated gallery.json with {len(gallery_data)} categories.")
 
 def generate_parent_category_html(parent_dir, subdirs):
     """Generate index.html for a parent directory that contains subdirectories with images."""

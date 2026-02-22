@@ -1,0 +1,73 @@
+{
+  "avatar": {
+    "us": [
+      "/avatar/us/01.cute-girl.png",
+      "/avatar/us/02.adorable-puppy.png",
+      "/avatar/us/03.cool-guy.png",
+      "/avatar/us/04.astronaut-cat.png",
+      "/avatar/us/05.little-monster.png",
+      "/avatar/us/06.professional-person.png",
+      "/avatar/us/07.geometric-girl.png",
+      "/avatar/us/08.thinking-guy.png",
+      "/avatar/us/09.japanese-style.png",
+      "/avatar/us/10.abstract-avatar.png",
+      "/avatar/us/11.forest-girl.png",
+      "/avatar/us/12.city-boy.png",
+      "/avatar/us/13.cyberpunk-girl.png"
+    ],
+    "cn": [
+      "/avatar/cn/01.koi-girl.png",
+      "/avatar/cn/02.ink-swordsman.png",
+      "/avatar/cn/03.tang-dynasty-cat.png",
+      "/avatar/cn/04.bamboo-monk.png",
+      "/avatar/cn/05.pipa-fairy.png",
+      "/avatar/cn/07.lotus-child.png",
+      "/avatar/cn/08.peking-opera-boy.png",
+      "/avatar/cn/09.blue-porcelain-girl.png",
+      "/avatar/cn/10.paper-fan-scholar.png",
+      "/avatar/cn/11.dad-qilin.png",
+      "/avatar/cn/12.punk-lion-dance.png",
+      "/avatar/cn/13.baby-dragon-pearl.png",
+      "/avatar/cn/14.tumbler-crane.png",
+      "/avatar/cn/15.moon-rabbit.png",
+      "/avatar/cn/16.fortune-taotie.png",
+      "/avatar/cn/17.phoenix-chick.png",
+      "/avatar/cn/18.kungfu-panda.png",
+      "/avatar/cn/19.xuanwu-turtle.png",
+      "/avatar/cn/20.nian-beast-baby.png",
+      "/avatar/cn/21.winter-plum.png",
+      "/avatar/cn/22.lantern-festival.png",
+      "/avatar/cn/23.spring-kite.png"
+    ]
+  },
+  "family": [
+    "/family/01.Annual_Review.png",
+    "/family/02.Annual_Recall.png",
+    "/family/03.Monthly_Lifestyle.png",
+    "/family/04.Weekly_WeekendMorning.png",
+    "/family/05.Weekly_NightReturn.png",
+    "/family/06.LongTrip_Departure.png",
+    "/family/07.ShortTrip_Picnic.png",
+    "/family/08.Seaside_Walking.png",
+    "/family/09.City_Landmark.png",
+    "/family/10.Mountain_Camping.png",
+    "/family/11.Moving_NewLife.png",
+    "/family/12.Home_Upgrade.png",
+    "/family/13.Parenting_LateNight.png",
+    "/family/14.Health_Running.png",
+    "/family/15.Holiday_Christmas.png",
+    "/family/16.Finance_Goal.png",
+    "/family/17.Shopping_Supermarket.png",
+    "/family/18.Unexpected_RainWalk.png",
+    "/family/19.Dining_SharedMeal.png",
+    "/family/20.Future_Hope.png"
+  ],
+  "sights": [
+    "/sights/01.Autumn_ParkPicnic.png",
+    "/sights/02.Rainy_CafeWindow.png",
+    "/sights/03.Busy_FamilyKitchen.png",
+    "/sights/04.City_RooftopParty.png",
+    "/sights/05.Desert_Bonfire.png",
+    "/sights/06.Coastal_RoadTrip.png"
+  ]
+}
