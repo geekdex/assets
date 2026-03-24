@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A18CD1"/>
+      <stop offset="100%" style="stop-color:#FBC2EB"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#A18CD1" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Briefcase body -->
+  <rect x="22" y="50" width="84" height="58" rx="8" fill="white" fill-opacity="0.25"/>
+  <rect x="22" y="50" width="84" height="58" rx="8" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2.5"/>
+  <!-- Briefcase handle -->
+  <path d="M46 50 L46 40 Q46 32 54 32 L74 32 Q82 32 82 40 L82 50" fill="none" stroke="white" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>
+  <!-- Center divider line -->
+  <rect x="22" y="74" width="84" height="4" rx="2" fill="white" fill-opacity="0.3"/>
+  <!-- Clasp -->
+  <rect x="56" y="68" width="16" height="12" rx="4" fill="white" fill-opacity="0.5"/>
+  <circle cx="64" cy="74" r="3" fill="white" fill-opacity="0.8"/>
+  <!-- Plus sign for extra income -->
+  <circle cx="96" cy="36" r="14" fill="white" fill-opacity="0.3"/>
+  <rect x="91" y="34" width="10" height="4" rx="2" fill="white"/>
+  <rect x="93" y="30" width="4" height="12" rx="2" fill="white"/>
+</svg>

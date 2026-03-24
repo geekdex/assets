@@ -1,20 +1,5 @@
 {
   "avatar": {
-    "us": [
-      "/avatar/us/01.cute-girl.png",
-      "/avatar/us/02.adorable-puppy.png",
-      "/avatar/us/03.cool-guy.png",
-      "/avatar/us/04.astronaut-cat.png",
-      "/avatar/us/05.little-monster.png",
-      "/avatar/us/06.professional-person.png",
-      "/avatar/us/07.geometric-girl.png",
-      "/avatar/us/08.thinking-guy.png",
-      "/avatar/us/09.japanese-style.png",
-      "/avatar/us/10.abstract-avatar.png",
-      "/avatar/us/11.forest-girl.png",
-      "/avatar/us/12.city-boy.png",
-      "/avatar/us/13.cyberpunk-girl.png"
-    ],
     "cn": [
       "/avatar/cn/01.koi-girl.png",
       "/avatar/cn/02.ink-swordsman.png",
@@ -38,6 +23,21 @@
       "/avatar/cn/21.winter-plum.png",
       "/avatar/cn/22.lantern-festival.png",
       "/avatar/cn/23.spring-kite.png"
+    ],
+    "us": [
+      "/avatar/us/01.cute-girl.png",
+      "/avatar/us/02.adorable-puppy.png",
+      "/avatar/us/03.cool-guy.png",
+      "/avatar/us/04.astronaut-cat.png",
+      "/avatar/us/05.little-monster.png",
+      "/avatar/us/06.professional-person.png",
+      "/avatar/us/07.geometric-girl.png",
+      "/avatar/us/08.thinking-guy.png",
+      "/avatar/us/09.japanese-style.png",
+      "/avatar/us/10.abstract-avatar.png",
+      "/avatar/us/11.forest-girl.png",
+      "/avatar/us/12.city-boy.png",
+      "/avatar/us/13.cyberpunk-girl.png"
     ]
   },
   "family": [
