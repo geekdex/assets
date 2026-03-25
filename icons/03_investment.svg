@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998E"/>
+      <stop offset="100%" style="stop-color:#38EF7D"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#11998E" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Chart bars -->
+  <rect x="24" y="82" width="14" height="22" rx="4" fill="white" fill-opacity="0.35"/>
+  <rect x="44" y="68" width="14" height="36" rx="4" fill="white" fill-opacity="0.45"/>
+  <rect x="64" y="52" width="14" height="52" rx="4" fill="white" fill-opacity="0.55"/>
+  <rect x="84" y="36" width="14" height="68" rx="4" fill="white" fill-opacity="0.7"/>
+  <!-- Trend arrow -->
+  <polyline points="24,88 44,74 64,58 84,42" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrow head -->
+  <polygon points="84,30 96,42 84,42" fill="white"/>
+  <polygon points="96,30 96,44 82,30" fill="white"/>
+  <!-- Baseline -->
+  <rect x="18" y="104" width="92" height="3" rx="1.5" fill="white" fill-opacity="0.4"/>
+  <!-- Up arrow small indicator -->
+  <text x="94" y="28" font-size="16" fill="white" font-weight="bold">↗</text>
+</svg>

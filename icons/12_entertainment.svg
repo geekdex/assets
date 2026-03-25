@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4776E6"/>
+      <stop offset="100%" style="stop-color:#8E54E9"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#4776E6" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Game controller -->
+  <path d="M20 56 Q20 44 36 44 L48 44 L52 36 L76 36 L80 44 L92 44 Q108 44 108 56 L108 80 Q108 96 92 96 L36 96 Q20 96 20 80 Z" fill="white" fill-opacity="0.25"/>
+  <path d="M20 56 Q20 44 36 44 L48 44 L52 36 L76 36 L80 44 L92 44 Q108 44 108 56 L108 80 Q108 96 92 96 L36 96 Q20 96 20 80 Z" fill="none" stroke="white" stroke-opacity="0.6" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- D-pad left -->
+  <rect x="32" y="63" width="22" height="8" rx="3" fill="white" fill-opacity="0.5"/>
+  <rect x="39" y="56" width="8" height="22" rx="3" fill="white" fill-opacity="0.5"/>
+  <!-- Buttons right -->
+  <circle cx="84" cy="62" r="6" fill="white" fill-opacity="0.4"/>
+  <circle cx="96" cy="70" r="6" fill="white" fill-opacity="0.4"/>
+  <circle cx="84" cy="78" r="6" fill="white" fill-opacity="0.4"/>
+  <circle cx="72" cy="70" r="6" fill="white" fill-opacity="0.4"/>
+  <!-- Button symbols -->
+  <text x="84" y="66" text-anchor="middle" font-size="8" fill="white" font-weight="bold">▲</text>
+  <text x="96" y="74" text-anchor="middle" font-size="8" fill="white" font-weight="bold">●</text>
+  <text x="84" y="82" text-anchor="middle" font-size="8" fill="white" font-weight="bold">✕</text>
+  <text x="72" y="74" text-anchor="middle" font-size="8" fill="white" font-weight="bold">■</text>
+  <!-- Center buttons -->
+  <rect x="56" y="65" width="10" height="6" rx="3" fill="white" fill-opacity="0.4"/>
+  <rect x="62" y="65" width="10" height="6" rx="3" fill="white" fill-opacity="0.4"/>
+  <!-- Stars -->
+  <text x="30" y="32" font-size="12" fill="white" fill-opacity="0.5">✦</text>
+  <text x="92" y="30" font-size="10" fill="white" fill-opacity="0.4">✦</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF416C"/>
+      <stop offset="100%" style="stop-color:#FF4B2B"/>
+    </linearGradient>
+    <linearGradient id="env" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B"/>
+      <stop offset="100%" style="stop-color:#FF4B2B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF416C" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Red envelope -->
+  <rect x="24" y="36" width="80" height="64" rx="8" fill="white" fill-opacity="0.2"/>
+  <rect x="24" y="36" width="80" height="64" rx="8" fill="none" stroke="white" stroke-opacity="0.6" stroke-width="2.5"/>
+  <!-- Envelope flap -->
+  <path d="M24 44 L64 72 L104 44" fill="none" stroke="white" stroke-opacity="0.7" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Gold circle with character -->
+  <circle cx="64" cy="80" r="16" fill="white" fill-opacity="0.0"/>
+  <circle cx="64" cy="80" r="16" fill="none" stroke="#FFD700" stroke-width="2.5"/>
+  <!-- 福 character replacement - abstract lucky symbol -->
+  <text x="64" y="87" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold" fill="#FFD700">福</text>
+  <!-- Decorative dots -->
+  <circle cx="34" cy="58" r="3" fill="white" fill-opacity="0.4"/>
+  <circle cx="94" cy="58" r="3" fill="white" fill-opacity="0.4"/>
+</svg>

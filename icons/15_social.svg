@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FE8C00"/>
+      <stop offset="100%" style="stop-color:#F83600"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FE8C00" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Two people facing each other -->
+  <!-- Person left -->
+  <circle cx="36" cy="40" r="14" fill="white" fill-opacity="0.35"/>
+  <circle cx="36" cy="40" r="14" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+  <path d="M14 84 Q14 62 36 62 Q52 62 58 76" fill="white" fill-opacity="0.25"/>
+  <path d="M14 84 Q14 62 36 62 Q52 62 58 76" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Person right -->
+  <circle cx="92" cy="40" r="14" fill="white" fill-opacity="0.35"/>
+  <circle cx="92" cy="40" r="14" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+  <path d="M114 84 Q114 62 92 62 Q76 62 70 76" fill="white" fill-opacity="0.25"/>
+  <path d="M114 84 Q114 62 92 62 Q76 62 70 76" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Heart in middle / exchange symbol -->
+  <path d="M64 88 C64 88 48 78 48 68 C48 62 54 58 59 62 C61 63 63 66 64 68 C65 66 67 63 69 62 C74 58 80 62 80 68 C80 78 64 88 64 88 Z" fill="white" fill-opacity="0.6"/>
+  <!-- Connecting hands area -->
+  <path d="M50 78 Q64 90 78 78" fill="none" stroke="white" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round"/>
+</svg>
