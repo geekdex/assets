@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons - Photo Gallery</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .photo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .caption {
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            transition: transform 0.1s ease-out;
+            cursor: grab;
+            transform-origin: center center;
+        }
+        .lightbox-content:active {
+            cursor: grabbing;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Icons</h1>
+        <a href="../index.html" class="back-link">← Back to Gallery</a>
+    </header>
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="01_salary.svg" alt="01 salary" loading="lazy">
+            <div class="caption">01 salary</div>
+        </div>
+        <div class="photo-card">
+            <img src="02_bonus.svg" alt="02 bonus" loading="lazy">
+            <div class="caption">02 bonus</div>
+        </div>
+        <div class="photo-card">
+            <img src="03_investment.svg" alt="03 investment" loading="lazy">
+            <div class="caption">03 investment</div>
+        </div>
+        <div class="photo-card">
+            <img src="04_parttime.svg" alt="04 parttime" loading="lazy">
+            <div class="caption">04 parttime</div>
+        </div>
+        <div class="photo-card">
+            <img src="05_redenvelope.svg" alt="05 redenvelope" loading="lazy">
+            <div class="caption">05 redenvelope</div>
+        </div>
+        <div class="photo-card">
+            <img src="06_otherincome.svg" alt="06 otherincome" loading="lazy">
+            <div class="caption">06 otherincome</div>
+        </div>
+        <div class="photo-card">
+            <img src="07_food.svg" alt="07 food" loading="lazy">
+            <div class="caption">07 food</div>
+        </div>
+        <div class="photo-card">
+            <img src="08_shopping.svg" alt="08 shopping" loading="lazy">
+            <div class="caption">08 shopping</div>
+        </div>
+        <div class="photo-card">
+            <img src="09_transport.svg" alt="09 transport" loading="lazy">
+            <div class="caption">09 transport</div>
+        </div>
+        <div class="photo-card">
+            <img src="10_housing.svg" alt="10 housing" loading="lazy">
+            <div class="caption">10 housing</div>
+        </div>
+        <div class="photo-card">
+            <img src="11_medical.svg" alt="11 medical" loading="lazy">
+            <div class="caption">11 medical</div>
+        </div>
+        <div class="photo-card">
+            <img src="12_entertainment.svg" alt="12 entertainment" loading="lazy">
+            <div class="caption">12 entertainment</div>
+        </div>
+        <div class="photo-card">
+            <img src="13_education.svg" alt="13 education" loading="lazy">
+            <div class="caption">13 education</div>
+        </div>
+        <div class="photo-card">
+            <img src="14_communications.svg" alt="14 communications" loading="lazy">
+            <div class="caption">14 communications</div>
+        </div>
+        <div class="photo-card">
+            <img src="15_social.svg" alt="15 social" loading="lazy">
+            <div class="caption">15 social</div>
+        </div>
+        <div class="photo-card">
+            <img src="16_otherexpense.svg" alt="16 otherexpense" loading="lazy">
+            <div class="caption">16 otherexpense</div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close');
+        const cards = document.querySelectorAll('.photo-card');
+
+        // Zoom and Pan variables
+        let scale = 1;
+        let isDragging = false;
+        let startX = 0, startY = 0;
+        let translateX = 0, translateY = 0;
+
+        function resetZoom() {
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateTransform();
+        }
+
+        function updateTransform() {
+            lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const img = card.querySelector('img');
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+                resetZoom();
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Wheel Zoom
+        lightbox.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * -0.001;
+            const newScale = Math.min(Math.max(0.5, scale + delta), 5);
+            scale = newScale;
+            updateTransform();
+        });
+
+        // Drag Pan
+        lightboxImg.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            lightboxImg.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                lightboxImg.style.cursor = 'grab';
+            }
+        });
+    </script>
+</body>
+</html>

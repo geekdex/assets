@@ -23,7 +23,7 @@ def generate_gallery():
     # Process each subdirectory
     for subdir in subdirs:
         subdir_path = os.path.join(root_dir, subdir)
-        images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+        images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'))]
         images.sort()
 
         # Check if this directory has subdirectories with images
@@ -46,7 +46,7 @@ def generate_gallery():
             subdir_data = {}  # 存储子目录的图片
             for sub_subdir in sub_subdirs:
                 sub_subdir_path = os.path.join(subdir_path, sub_subdir)
-                sub_images = [f for f in os.listdir(sub_subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+                sub_images = [f for f in os.listdir(sub_subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'))]
                 if sub_images:
                     has_images = True
                     total_images += len(sub_images)
@@ -189,7 +189,7 @@ def generate_parent_category_html(parent_dir, subdirs):
     subdir_cards = ""
     for subdir in subdirs:
         subdir_path = os.path.join(parent_dir, subdir)
-        images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+        images = [f for f in os.listdir(subdir_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'))]
         if not images:
             continue
         

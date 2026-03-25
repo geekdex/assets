@@ -62,6 +62,24 @@
     "/family/19.Dining_SharedMeal.png",
     "/family/20.Future_Hope.png"
   ],
+  "icons": [
+    "/icons/01_salary.svg",
+    "/icons/02_bonus.svg",
+    "/icons/03_investment.svg",
+    "/icons/04_parttime.svg",
+    "/icons/05_redenvelope.svg",
+    "/icons/06_otherincome.svg",
+    "/icons/07_food.svg",
+    "/icons/08_shopping.svg",
+    "/icons/09_transport.svg",
+    "/icons/10_housing.svg",
+    "/icons/11_medical.svg",
+    "/icons/12_entertainment.svg",
+    "/icons/13_education.svg",
+    "/icons/14_communications.svg",
+    "/icons/15_social.svg",
+    "/icons/16_otherexpense.svg"
+  ],
   "sights": [
     "/sights/01.Autumn_ParkPicnic.png",
     "/sights/02.Rainy_CafeWindow.png",
