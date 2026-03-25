@@ -64,6 +64,70 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        .action-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #495057;
+            transition: all 0.2s;
+        }
+        .action-btn:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+        /* Toast CSS */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideIn 0.3s ease-out;
+            font-size: 14px;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        .toast.hide {
+            animation: slideOut 0.3s ease-out forwards;
+        }
         /* Lightbox CSS */
         .lightbox {
             display: none;
@@ -121,66 +185,130 @@
         <div class="photo-card">
             <img src="01_salary.svg" alt="01 salary" loading="lazy">
             <div class="caption">01 salary</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="01_salary.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="01_salary.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="02_bonus.svg" alt="02 bonus" loading="lazy">
             <div class="caption">02 bonus</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="02_bonus.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="02_bonus.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="03_investment.svg" alt="03 investment" loading="lazy">
             <div class="caption">03 investment</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="03_investment.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="03_investment.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="04_parttime.svg" alt="04 parttime" loading="lazy">
             <div class="caption">04 parttime</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="04_parttime.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="04_parttime.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="05_redenvelope.svg" alt="05 redenvelope" loading="lazy">
             <div class="caption">05 redenvelope</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="05_redenvelope.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="05_redenvelope.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="06_otherincome.svg" alt="06 otherincome" loading="lazy">
             <div class="caption">06 otherincome</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="06_otherincome.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="06_otherincome.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="07_food.svg" alt="07 food" loading="lazy">
             <div class="caption">07 food</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="07_food.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="07_food.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="08_shopping.svg" alt="08 shopping" loading="lazy">
             <div class="caption">08 shopping</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="08_shopping.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="08_shopping.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="09_transport.svg" alt="09 transport" loading="lazy">
             <div class="caption">09 transport</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="09_transport.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="09_transport.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="10_housing.svg" alt="10 housing" loading="lazy">
             <div class="caption">10 housing</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="10_housing.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="10_housing.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="11_medical.svg" alt="11 medical" loading="lazy">
             <div class="caption">11 medical</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="11_medical.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="11_medical.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="12_entertainment.svg" alt="12 entertainment" loading="lazy">
             <div class="caption">12 entertainment</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="12_entertainment.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="12_entertainment.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="13_education.svg" alt="13 education" loading="lazy">
             <div class="caption">13 education</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="13_education.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="13_education.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="14_communications.svg" alt="14 communications" loading="lazy">
             <div class="caption">14 communications</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="14_communications.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="14_communications.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="15_social.svg" alt="15 social" loading="lazy">
             <div class="caption">15 social</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="15_social.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="15_social.svg">🔗 Copy Link</button>
+            </div>
         </div>
         <div class="photo-card">
             <img src="16_otherexpense.svg" alt="16 otherexpense" loading="lazy">
             <div class="caption">16 otherexpense</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="16_otherexpense.svg">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="16_otherexpense.svg">🔗 Copy Link</button>
+            </div>
         </div>
     </div>
 
@@ -211,6 +339,127 @@
         function updateTransform() {
             lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 2000);
+        }
+
+        // Copy image to clipboard
+        async function copyImageToClipboard(src) {
+            try {
+                const response = await fetch(src);
+                const blob = await response.blob();
+                
+                // Check if it's an SVG file
+                const isSvg = src.toLowerCase().endsWith('.svg') || blob.type === 'image/svg+xml';
+                
+                if (isSvg) {
+                    // For SVG, convert to PNG via canvas
+                    const svgText = await blob.text();
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const img = new Image();
+                    
+                    // Set canvas size
+                    canvas.width = 512;
+                    canvas.height = 512;
+                    
+                    img.onload = async () => {
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        canvas.toBlob(async (pngBlob) => {
+                            try {
+                                const clipboardItem = {};
+                                clipboardItem['image/png'] = pngBlob;
+                                await navigator.clipboard.write([
+                                    new ClipboardItem(clipboardItem)
+                                ]);
+                                showToast('✓ Image copied to clipboard');
+                            } catch (err) {
+                                showToast('✗ Failed to copy image');
+                                console.error('Error writing to clipboard:', err);
+                            }
+                        }, 'image/png');
+                    };
+                    
+                    img.onerror = () => {
+                        showToast('✗ Failed to load SVG');
+                    };
+                    
+                    img.src = URL.createObjectURL(blob);
+                } else {
+                    // For other image formats, convert to PNG
+                    const canvas = document.createElement('canvas');
+                    const img = new Image();
+                    
+                    img.onload = async () => {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        canvas.toBlob(async (pngBlob) => {
+                            try {
+                                const clipboardItem = {};
+                                clipboardItem['image/png'] = pngBlob;
+                                await navigator.clipboard.write([
+                                    new ClipboardItem(clipboardItem)
+                                ]);
+                                showToast('✓ Image copied to clipboard');
+                            } catch (err) {
+                                showToast('✗ Failed to copy image');
+                                console.error('Error writing to clipboard:', err);
+                            }
+                        }, 'image/png');
+                    };
+                    
+                    img.onerror = () => {
+                        showToast('✗ Failed to load image');
+                    };
+                    
+                    img.src = URL.createObjectURL(blob);
+                }
+            } catch (err) {
+                showToast('✗ Failed to copy image');
+                console.error('Error copying image:', err);
+            }
+        }
+
+        // Copy link to clipboard
+        function copyLinkToClipboard(src) {
+            const url = new URL(src, window.location.href).href;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('✓ Link copied to clipboard');
+            }).catch(err => {
+                showToast('✗ Failed to copy link');
+                console.error('Error copying link:', err);
+            });
+        }
+
+        // Add event listeners for copy buttons
+        document.querySelectorAll('.copy-img').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                copyImageToClipboard(btn.dataset.src);
+            });
+        });
+
+        document.querySelectorAll('.copy-link').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                copyLinkToClipboard(btn.dataset.src);
+            });
+        });
 
         cards.forEach(card => {
             card.addEventListener('click', (e) => {

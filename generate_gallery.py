@@ -311,6 +311,10 @@ def generate_category_html(subdir, images, parent_dir=None):
         <div class="photo-card">
             <img src="{img_url}" alt="{caption}" loading="lazy">
             <div class="caption">{caption}</div>
+            <div class="card-actions">
+                <button class="action-btn copy-img" data-src="{img_url}">📋 Copy Image</button>
+                <button class="action-btn copy-link" data-src="{img_url}">🔗 Copy Link</button>
+            </div>
         </div>"""
 
     html_content = f"""<!DOCTYPE html>
@@ -378,6 +382,70 @@ def generate_category_html(subdir, images, parent_dir=None):
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }}
+        .card-actions {{
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }}
+        .action-btn {{
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #495057;
+            transition: all 0.2s;
+        }}
+        .action-btn:hover {{
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }}
+        .action-btn:active {{
+            transform: scale(0.98);
+        }}
+        /* Toast CSS */
+        .toast {{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideIn 0.3s ease-out;
+            font-size: 14px;
+        }}
+        @keyframes slideIn {{
+            from {{
+                transform: translateX(400px);
+                opacity: 0;
+            }}
+            to {{
+                transform: translateX(0);
+                opacity: 1;
+            }}
+        }}
+        @keyframes slideOut {{
+            from {{
+                transform: translateX(0);
+                opacity: 1;
+            }}
+            to {{
+                transform: translateX(400px);
+                opacity: 0;
+            }}
+        }}
+        .toast.hide {{
+            animation: slideOut 0.3s ease-out forwards;
         }}
         /* Lightbox CSS */
         .lightbox {{
@@ -462,6 +530,127 @@ def generate_category_html(subdir, images, parent_dir=None):
         function updateTransform() {{
             lightboxImg.style.transform = `translate(${{translateX}}px, ${{translateY}}px) scale(${{scale}})`;
         }}
+
+        // Toast notification
+        function showToast(message) {{
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {{
+                toast.classList.add('hide');
+                setTimeout(() => {{
+                    document.body.removeChild(toast);
+                }}, 300);
+            }}, 2000);
+        }}
+
+        // Copy image to clipboard
+        async function copyImageToClipboard(src) {{
+            try {{
+                const response = await fetch(src);
+                const blob = await response.blob();
+                
+                // Check if it's an SVG file
+                const isSvg = src.toLowerCase().endsWith('.svg') || blob.type === 'image/svg+xml';
+                
+                if (isSvg) {{
+                    // For SVG, convert to PNG via canvas
+                    const svgText = await blob.text();
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const img = new Image();
+                    
+                    // Set canvas size
+                    canvas.width = 512;
+                    canvas.height = 512;
+                    
+                    img.onload = async () => {{
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        canvas.toBlob(async (pngBlob) => {{
+                            try {{
+                                const clipboardItem = {{}};
+                                clipboardItem['image/png'] = pngBlob;
+                                await navigator.clipboard.write([
+                                    new ClipboardItem(clipboardItem)
+                                ]);
+                                showToast('✓ Image copied to clipboard');
+                            }} catch (err) {{
+                                showToast('✗ Failed to copy image');
+                                console.error('Error writing to clipboard:', err);
+                            }}
+                        }}, 'image/png');
+                    }};
+                    
+                    img.onerror = () => {{
+                        showToast('✗ Failed to load SVG');
+                    }};
+                    
+                    img.src = URL.createObjectURL(blob);
+                }} else {{
+                    // For other image formats, convert to PNG
+                    const canvas = document.createElement('canvas');
+                    const img = new Image();
+                    
+                    img.onload = async () => {{
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        canvas.toBlob(async (pngBlob) => {{
+                            try {{
+                                const clipboardItem = {{}};
+                                clipboardItem['image/png'] = pngBlob;
+                                await navigator.clipboard.write([
+                                    new ClipboardItem(clipboardItem)
+                                ]);
+                                showToast('✓ Image copied to clipboard');
+                            }} catch (err) {{
+                                showToast('✗ Failed to copy image');
+                                console.error('Error writing to clipboard:', err);
+                            }}
+                        }}, 'image/png');
+                    }};
+                    
+                    img.onerror = () => {{
+                        showToast('✗ Failed to load image');
+                    }};
+                    
+                    img.src = URL.createObjectURL(blob);
+                }}
+            }} catch (err) {{
+                showToast('✗ Failed to copy image');
+                console.error('Error copying image:', err);
+            }}
+        }}
+
+        // Copy link to clipboard
+        function copyLinkToClipboard(src) {{
+            const url = new URL(src, window.location.href).href;
+            navigator.clipboard.writeText(url).then(() => {{
+                showToast('✓ Link copied to clipboard');
+            }}).catch(err => {{
+                showToast('✗ Failed to copy link');
+                console.error('Error copying link:', err);
+            }});
+        }}
+
+        // Add event listeners for copy buttons
+        document.querySelectorAll('.copy-img').forEach(btn => {{
+            btn.addEventListener('click', (e) => {{
+                e.stopPropagation();
+                copyImageToClipboard(btn.dataset.src);
+            }});
+        }});
+
+        document.querySelectorAll('.copy-link').forEach(btn => {{
+            btn.addEventListener('click', (e) => {{
+                e.stopPropagation();
+                copyLinkToClipboard(btn.dataset.src);
+            }});
+        }});
 
         cards.forEach(card => {{
             card.addEventListener('click', (e) => {{
