@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F77062"/>
+      <stop offset="100%" style="stop-color:#FE5196"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#F77062" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Heart shape -->
+  <path d="M64 96 C64 96 20 72 20 46 C20 34 30 26 42 26 C50 26 58 30 64 38 C70 30 78 26 86 26 C98 26 108 34 108 46 C108 72 64 96 64 96 Z" fill="white" fill-opacity="0.25"/>
+  <path d="M64 96 C64 96 20 72 20 46 C20 34 30 26 42 26 C50 26 58 30 64 38 C70 30 78 26 86 26 C98 26 108 34 108 46 C108 72 64 96 64 96 Z" fill="none" stroke="white" stroke-opacity="0.6" stroke-width="2.5"/>
+  <!-- Cross inside heart -->
+  <rect x="56" y="44" width="16" height="36" rx="5" fill="white" fill-opacity="0.6"/>
+  <rect x="46" y="54" width="36" height="16" rx="5" fill="white" fill-opacity="0.6"/>
+  <!-- Heartbeat line small decoration -->
+  <polyline points="26,64 32,64 36,54 40,74 44,64 50,64" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
